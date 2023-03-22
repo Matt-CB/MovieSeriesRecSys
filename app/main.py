@@ -1,44 +1,55 @@
 from fastapi import FastAPI
 import pandas as pd
-from etl import etl
+from etl import df_r
+from typing import Optional
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 
 
-netflix=pd.read_csv("Datasets\\amazon_prime_titles.csv")
-hulu=pd.read_csv("Datasets\\hulu_titles.csv")
-disney_plus=pd.read_csv("Datasets\\disney_plus_titles.csv")
-amazon_prime=pd.read_csv("Datasets\\amazon_prime_titles.csv")
-
-DF_Proyect = etl(netflix, hulu, disney_plus, amazon_prime)
-
-DF_Proyect
-
-r1 = pd.read_parquet('1.gzip')
-print(r1)
 app = FastAPI()
 
-@app.get("/")
+@app.get("/")   
 async def index():
     return "Inicio"
 
 @app.get("/get_max_duration/{year}/{platform}/{duration_type}")
 async def get_max_duration(year:int, platform:str, duration_type:str):
-    return r1
+    return get_max_duration_r()
 
-@app.get("/get_score_count")
+@app.get("/get_score_count/{platform}/{scored}/{year}")  #get_score_count(platform, scored, year)
 async def get_score_count():
-    return "cantidad_de_peliculas_puntaje"
+    return get_score_count_r()
 
-@app.get("/get_count_platform")
-async def get_count_platform():
-    return "cantidad_de_peliculas_plataforma"
+@app.get("/get_count_platform/{platform}")  #get_count_platform(platform))
+async def get_count_platform(platform:str):
+    return get_count_platform_r()
 
-@app.get("/get_actor/{year}")
+@app.get("/get_actor/{platform}/{year}") #get_actor(platform, year)
 async def get_actor(year):
-    return get_actor_r(2002)
+    return get_actor_r()
 
 
-'''Película con mayor duración con filtros 
-opcionales de AÑO, PLATAFORMA Y TIPO DE DURACIÓN. (la función debe llamarse get_max_duration(year, platform, duration_type))'''
 
-def get_max_duration_r():
-    
+#1
+def get_max_duration_r(year: Optional[int]=None, platform: Optional[str]=None, duration_type: Optional[str]='min'):
+
+    return
+
+#2
+
+def get_score_count_r(platform : str, scored : float, release_year: int):
+
+    return
+
+#3
+
+def get_count_platform_r(platform: str):
+
+    return
+
+#4
+
+def get_actor_r(platform: str, year: int):
+
+    return
