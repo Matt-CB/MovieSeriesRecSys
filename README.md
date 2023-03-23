@@ -47,7 +47,7 @@ __Herramientas presentes en el proyecto__
 
     Ahora puedes descubrir que peliculas van con tus gustos!!  
 
-__Link:__ https://2d0c880616d0ce5018.gradio.live/  
+__Link:__ https://ca7ef1f1d71c6803f7.gradio.live/ 
   #### el numero de pelicula tiene que ser la letra 'n', 'a', 'd' , 'h' + 's' + numero/s
   
   ❗  Aclaraciones sobre las consultas ❗  
